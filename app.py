@@ -25,7 +25,7 @@ def index():
     return render_template('index.html')
 
 
-# Маршрут для добавления книги
+# Маршрут для добавления
 @app.route('/api/add_book', methods=['POST'])
 def add_book():
     data = request.get_json()  # Получение данных JSON из запроса
