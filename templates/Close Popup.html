@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Popup</title>
+    <style>
+        /* Стили для всплывающего окна */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<button onclick="openPopup()">Открыть всплывающее окно</button>
+
+<!-- Всплывающее окно -->
+<div id="popup">
+    <p>Привет, Игорь!</p>
+</div>
+
+<!-- Скрипт для открытия и закрытия всплывающего окна -->
+<script>
+    function openPopup() {
+        document.getElementById('popup').style.display = 'block';
+        // Добавляем обработчик события клика на весь документ
+        document.addEventListener('click', closePopupOutside);
+    }
+
+    function closePopupOutside(event) {
+        var popup = document.getElementById('popup');
+        // Проверяем, был ли клик сделан вне всплывающего окна
+        if (popup && !popup.contains(event.target)) {
+            popup.style.display = 'none';
+            // Удаляем обработчик события клика
+            document.removeEventListener('click', closePopupOutside);
+        }
+    }
+</script>
+</body>
+</html>
